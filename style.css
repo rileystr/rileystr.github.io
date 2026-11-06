@@ -1,114 +1,153 @@
-:root {
-  --navy: #082b45;
-  --deep: #061e32;
-  --blue: #0d6686;
-  --aqua: #72d5d2;
-  --foam: #e9f7f5;
-  --sand: #f4e6c9;
-  --ink: #10354a;
-  --muted: #587483;
-  --card: rgba(255,255,255,.94);
-  --shadow: 0 18px 50px rgba(3, 28, 45, .16);
-}
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body {
-  margin: 0;
-  color: var(--ink);
-  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  background:
-    radial-gradient(ellipse at 15% 5%, rgba(114,213,210,.25), transparent 32rem),
-    linear-gradient(180deg, #dff5f2 0%, #f5fbf8 44%, #f4e6c9 100%);
-}
-a { color: inherit; }
-.topbar {
-  display:flex; justify-content:space-between; align-items:center; gap:16px;
-  max-width:1180px; margin:auto; padding:18px 24px;
-  color:white; position:relative; z-index:2;
-}
-.brand { font-weight:950; letter-spacing:.12em; font-size:.95rem; }
-.topbar a { text-decoration:none; font-size:.85rem; font-weight:750; opacity:.9; }
-.hero {
-  min-height:390px; color:white; overflow:hidden; position:relative;
-  background:
-    linear-gradient(100deg, rgba(4,30,49,.88), rgba(5,65,88,.53)),
-    url("https://images.unsplash.com/photo-1502680390469-be75c86b636f?auto=format&fit=crop&w=2000&q=85") center 48%/cover;
-  margin-top:-62px; padding:105px 24px 78px;
-}
-.hero:after {
-  content:""; position:absolute; inset:auto -5% -90px -5%; height:150px;
-  background:#dff5f2; border-radius:50% 50% 0 0 / 35% 35% 0 0;
-  transform:rotate(-2deg);
-}
-.hero-inner { max-width:1120px; margin:auto; position:relative; z-index:1; }
-.eyebrow { text-transform:uppercase; letter-spacing:.2em; font-size:.72rem; font-weight:850; color:var(--aqua); }
-h1 { font-size:clamp(2.7rem, 8vw, 5.7rem); line-height:.92; letter-spacing:-.065em; margin:18px 0; max-width:800px; }
-.hero p { max-width:550px; color:#e0f4f2; font-size:1.05rem; line-height:1.65; }
-.hero-cta {
-  display:inline-flex; margin-top:16px; padding:13px 19px; border-radius:999px;
-  background:var(--aqua); color:var(--deep); font-weight:900; text-decoration:none;
-  box-shadow:0 8px 25px rgba(0,0,0,.18);
-}
-main { max-width:1180px; margin:-5px auto 0; padding:18px 24px 70px; position:relative; z-index:1; }
-.section-head { display:flex; justify-content:space-between; align-items:end; gap:20px; margin:12px 0 22px; }
-.section-head h2 { margin:0; font-size:clamp(1.8rem,4vw,2.5rem); letter-spacing:-.045em; color:var(--navy); }
-.section-head p { margin:6px 0 0; color:var(--muted); }
-.updated-note { font-size:.78rem; color:var(--muted); white-space:nowrap; }
-.grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px; }
-.spot {
-  background:var(--card); border:1px solid rgba(8,43,69,.08); border-radius:22px;
-  overflow:hidden; box-shadow:var(--shadow); min-width:0;
-}
-.spot-top {
-  padding:19px 21px 15px; display:flex; justify-content:space-between; align-items:center; gap:12px;
-  background:linear-gradient(115deg,#f5fffc,#e7f6f5);
-}
-.spot h3 { margin:0; font-size:1.18rem; letter-spacing:-.025em; color:var(--navy); }
-.area { color:var(--muted); font-size:.78rem; margin-top:4px; }
-.tag { border-radius:99px; padding:7px 10px; background:#d8eeeb; color:#14576a; font-size:.68rem; font-weight:900; letter-spacing:.08em; white-space:nowrap; }
-.widget-area { padding:16px 18px 18px; min-height:150px; }
-.widget-placeholder {
-  min-height:116px; border:1.5px dashed #9fcac7; border-radius:14px; padding:18px;
-  display:flex; flex-direction:column; justify-content:center; align-items:flex-start; gap:7px;
-  background:#f8fdfb;
-}
-.widget-placeholder strong { color:var(--navy); }
-.widget-placeholder span { color:var(--muted); font-size:.84rem; line-height:1.45; }
-.widget-placeholder a { color:#08708b; font-size:.84rem; font-weight:800; }
-.widget-area iframe { display:block; width:100%; max-width:100%; border:0; border-radius:12px; background:#fff; }
-.credit { margin:9px 2px 0; color:var(--muted); font-size:.76rem; line-height:1.4; }
-.credit a { color:#08708b; font-weight:800; }
-.howto {
-  margin-top:30px; padding:25px; border-radius:22px; color:#eaf8f5;
-  background:linear-gradient(135deg,var(--navy),#0b5870); box-shadow:var(--shadow);
-}
-.howto h2 { margin:0 0 9px; font-size:1.55rem; }
-.howto p { color:#c5e6e3; line-height:1.6; margin:8px 0; }
-.howto a { color:#8ce5dc; font-weight:800; }
-.steps { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:15px; margin-top:18px; }
-.step { background:rgba(255,255,255,.09); border:1px solid rgba(255,255,255,.13); padding:15px; border-radius:15px; }
-.step b { display:block; color:var(--aqua); margin-bottom:7px; }
-footer { text-align:center; padding:22px 20px 35px; color:#55717e; font-size:.82rem; }
-footer a { color:#0b6b83; font-weight:750; }
+// ABOUT THIS FILE
+// This is script.js. It is written in JavaScript, a programming language that
+// makes web pages interactive. index.html holds the content and style.css
+// holds the look; this file holds the BEHAVIOR. Its job here is to let you
+// "favorite" surf spots with the star buttons and to remember your choices,
+// even after you close the browser.
+//
+// Lines that start with two slashes (//) are comments. The browser ignores
+// them. They are notes for humans.
 
-/* Favorite spots (saved with localStorage) */
-.spot-actions { display:flex; align-items:center; gap:8px; }
-.fav-btn {
-  width:34px; height:34px; padding:0; border:0; border-radius:50%;
-  background:#d8eeeb; color:#14576a; font-size:1.15rem; line-height:1; cursor:pointer;
-}
-.fav-btn:hover { background:#c5e6e3; }
-.fav-btn:focus-visible { outline:2px solid var(--blue); outline-offset:2px; }
-.fav-btn[aria-pressed="true"] { background:var(--aqua); color:var(--deep); }
-.spot.is-favorite { border-color:var(--aqua); box-shadow:0 0 0 2px var(--aqua), var(--shadow); }
-.fav-status { font-size:.85rem; }
+// A "variable" is a named box that holds a value. "const" makes a variable
+// that never gets reassigned. This one holds the name (called a "key") under
+// which we save our favorites in localStorage, a small storage area inside
+// your web browser that keeps data even after the page is closed. Think of
+// it like a labeled drawer: the label is this key. The text in quotes is a
+// "string", which is just text.
+const STORAGE_KEY = "socalSurfCheck.favorites";
 
-@media (max-width:760px) {
-  .grid { grid-template-columns:1fr; }
-  .section-head { align-items:flex-start; flex-direction:column; }
-  .updated-note { white-space:normal; }
-  .steps { grid-template-columns:1fr; }
-  .hero { min-height:370px; }
-  main { padding-left:16px; padding-right:16px; }
-  .topbar { padding-left:18px; padding-right:18px; }
+// A "function" is a reusable set of instructions with a name. Calling the
+// function (writing its name with parentheses) runs those instructions.
+// loadFavorites reads the saved list of favorites from localStorage.
+function loadFavorites() {
+  // "try/catch" means: try to run the code in the try part, and if something
+  // goes wrong (an "error"), run the catch part instead of crashing the page.
+  try {
+    // getItem reads the saved text from the drawer. We saved the list as
+    // JSON, a text format for storing data, so JSON.parse turns that text back
+    // into a real list (called an "array").
+    const saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
+    // Make sure what we got is really an array. If so, use it. If not (for
+    // example, nothing was saved yet), use an empty array [] instead. The
+    // "? :" is a short way to write an if/else choice.
+    return Array.isArray(saved) ? saved : [];
+  } catch (error) {
+    // If anything fails, such as corrupted saved data, start with no favorites.
+    return [];
+  }
 }
+
+// saveFavorites writes the list of favorites into localStorage. The text
+// between the parentheses ("favorites") is a "parameter": a value we hand to
+// the function when we call it.
+function saveFavorites(favorites) {
+  try {
+    // JSON.stringify turns the array into text, because localStorage can only
+    // store text. setItem saves that text under our key.
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(favorites));
+  } catch (error) {
+    // Storage can be blocked (private mode, full); the page still works without saving.
+  }
+}
+
+// Run loadFavorites right when the page opens and keep the result in a
+// variable. "let" is like const, but allows the value to change later, which
+// we need because the list grows and shrinks as you star and un-star spots.
+let favorites = loadFavorites();
+// Find the empty paragraph in index.html with the id "fav-status" and save it
+// in a variable so we can change its text later. "document" stands for the
+// whole page, and getElementById finds the one element with that id.
+const statusEl = document.getElementById("fav-status");
+
+// render updates what you SEE on the page so it matches the favorites list:
+// star icons, card outlines, and the status sentence.
+function render() {
+  // querySelectorAll finds ALL elements matching a CSS-style selector.
+  // ".spot" finds every surf-spot card. forEach then runs the instructions
+  // inside "function (card) { ... }" once for each card, with "card" standing
+  // for the card currently being handled.
+  document.querySelectorAll(".spot").forEach(function (card) {
+    // card.dataset.spot reads the data-spot attribute from the card's HTML,
+    // such as "newport-beach". That is the spot's unique ID.
+    const id = card.dataset.spot;
+    // Find the <h3> inside this card and get its text, such as "Newport
+    // Beach". textContent is the plain text inside an element.
+    const name = card.querySelector("h3").textContent;
+    // Find this card's star button.
+    const button = card.querySelector(".fav-btn");
+    // .includes checks whether the favorites list contains this spot's ID.
+    // The result is true or false (a "boolean").
+    const isFavorite = favorites.includes(id);
+
+    // classList.toggle("is-favorite", isFavorite) adds the CSS class
+    // "is-favorite" to the card if isFavorite is true, and removes it if
+    // false. The CSS file gives cards with that class an aqua outline.
+    card.classList.toggle("is-favorite", isFavorite);
+    // Update the button's attributes so screen readers know if it is
+    // pressed. HTML attributes are always text, so String() converts true or
+    // false into the text "true" or "false".
+    button.setAttribute("aria-pressed", String(isFavorite));
+    // Set the button's spoken label, such as "Save Blackies as a favorite" or
+    // "Remove Blackies from favorites". The + signs join pieces of text
+    // together.
+    button.setAttribute("aria-label", (isFavorite ? "Remove " : "Save ") + name + (isFavorite ? " from favorites" : " as a favorite"));
+    // Show a filled star if it is a favorite, an empty star if not.
+    button.textContent = isFavorite ? "★" : "☆";
+  });
+
+  // An "if" statement runs code only when a condition is true.
+  // .length is how many items are in the list, so 0 means no favorites.
+  if (favorites.length === 0) {
+    // Show a hint telling the visitor what to do.
+    statusEl.textContent = "Tap the ☆ on a spot to save it as a favorite.";
+  } else {
+    // Otherwise, build a list of the favorite spots' names. .map goes through
+    // the favorites list and turns each ID into that spot's display name.
+    const names = favorites.map(function (id) {
+      // This selector finds the card whose data-spot matches the ID, then
+      // gets the text of its <h3>.
+      return document.querySelector('.spot[data-spot="' + id + '"] h3').textContent;
+    });
+    // names.join(", ") glues the names together with commas between them.
+    statusEl.textContent = "★ Your favorites: " + names.join(", ");
+  }
+}
+
+// CLEAN-UP STEP: .filter keeps only the items that pass a test. Here, we keep
+// a saved ID only if a matching card still exists on the page. This prevents
+// problems if a spot is ever removed from the website but is still saved in
+// someone's browser.
+// Drop any saved ids that no longer match a spot on the page.
+favorites = favorites.filter(function (id) {
+  return document.querySelector('.spot[data-spot="' + id + '"]');
+});
+
+// SET UP THE BUTTONS: go through every star button on the page and tell it
+// what to do when clicked.
+document.querySelectorAll(".fav-btn").forEach(function (button) {
+  // addEventListener means "watch for something to happen to this element". An
+  // "event" is something that happens on the page, like a click. When a click
+  // happens, the function after "click" runs.
+  button.addEventListener("click", function () {
+    // .closest(".spot") climbs up from the button to the card that contains
+    // it, so we can read that card's data-spot ID.
+    const id = button.closest(".spot").dataset.spot;
+    if (favorites.includes(id)) {
+      // Already a favorite, so remove it. .filter keeps every item that is
+      // NOT this ID ("!==" means "is not equal to").
+      favorites = favorites.filter(function (item) { return item !== id; });
+    } else {
+      // Not a favorite yet, so add it. .push adds an item to the end of the
+      // list.
+      favorites.push(id);
+    }
+    // Save the updated list so it is remembered, then refresh the page's
+    // appearance to match.
+    saveFavorites(favorites);
+    render();
+  });
+});
+
+// Finally, run render once when the page first loads, so stars and outlines
+// from your previous visit show up right away.
+render();
