@@ -1,40 +1,119 @@
 <!doctype html>
+<!--
+  ABOUT THIS FILE
+  This is index.html, the main page of the website. It is written in HTML
+  (HyperText Markup Language), the language that describes the STRUCTURE and
+  CONTENT of a web page: its headings, paragraphs, buttons, links, and so on.
+
+  A few words you will see a lot in this file:
+    - Tag: a label in angle brackets, like <h1> or <p>. Most tags come in
+      pairs: an opening tag <p> and a closing tag </p>.
+    - Element: a tag pair plus everything inside it. For example,
+      <p>Hello</p> is one paragraph element.
+    - Attribute: extra information inside an opening tag, written as
+      name="value". In <a href="#spots">, "href" is the attribute and
+      "#spots" is its value.
+    - Class: a nickname given to an element (class="spot") so the CSS file
+      can style it. CSS (Cascading Style Sheets) is the language that
+      controls how things LOOK: colors, sizes, spacing, and layout.
+    - JavaScript: a programming language that makes the page DO things when
+      you interact with it. Ours lives in script.js.
+
+  The line above this comment, "doctype html", just tells the browser
+  "this page uses modern HTML".
+-->
+<!-- The <html> element wraps the whole page. lang="en" says the page is in
+     English, which helps screen readers pronounce words correctly and helps
+     search engines. -->
 <html lang="en">
+<!-- The <head> holds behind-the-scenes information about the page. Nothing
+     inside the head is shown on the page itself. -->
 <head>
+  <!-- A <meta> tag gives the browser information about the page.
+       charset="utf-8" is the text encoding. It lets the page correctly show
+       special characters like arrows (↓ ↘ ↗) and the dot (·). -->
   <meta charset="utf-8">
+  <!-- The "viewport" is the visible area of the page on a screen. This line
+       makes the page fit the width of a phone instead of shrinking down a
+       desktop-sized page. -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Some phone browsers use this color (dark navy) to tint their top bar. -->
   <meta name="theme-color" content="#082b45">
+  <!-- The title appears on the browser tab and in search results. -->
   <title>SO CAL SURF CHECK</title>
+  <!-- A short summary of the site that search engines may show under the
+       title in search results. -->
   <meta name="description" content="A laid-back Southern California surf check for Newport, Huntington, and nearby breaks.">
+  <!-- This <link> connects this HTML file to our CSS file, style.css, so the
+       page gets all of its colors, fonts, and layout. "href" is the file's
+       location; "rel" says what kind of file it is (a stylesheet). -->
   <link rel="stylesheet" href="style.css">
 </head>
+<!-- The <body> holds everything you actually SEE on the page. -->
 <body>
+  <!-- TOP BAR: a <nav> (navigation) element across the top with the site
+       name on the left and a link on the right. -->
   <nav class="topbar">
     <div class="brand">SO CAL SURF CHECK</div>
+    <!-- An <a> (anchor) tag makes a link. href="#spots" is a link to another
+         spot on THIS page: the element whose id is "spots" (the lineup
+         section further down). Clicking it scrolls there. -->
     <a href="#spots">CHECK THE BREAKS ↓</a>
   </nav>
 
+  <!-- HERO BANNER: the big picture and headline at the top of the page. The
+       background photo is set in the CSS file. -->
   <header class="hero">
     <div class="hero-inner">
       <div class="eyebrow">Orange County · California</div>
+      <!-- <h1> is the main headline. <br> forces a line break. -->
       <h1>FIND YOUR<br>WAVE.</h1>
       <p>Your quick daily check for the Newport zone and nearby breaks. Check the swell, wind, and forecast before you load up the car.</p>
+      <!-- A link styled to look like a button. "&nbsp;" is a special code
+           for a space that will not be split across two lines. -->
       <a class="hero-cta" href="#spots">FIND A GOOD ONE&nbsp; ↘</a>
     </div>
   </header>
 
+  <!-- <main> holds the main content of the page: the surf spots and the
+       info box at the bottom. -->
   <main>
+    <!-- id="spots" is a unique name for this section. It is what the
+         "#spots" links above jump to. -->
     <section id="spots">
+      <!-- Section heading area: a title on the left, a note on the right. -->
       <div class="section-head">
         <div>
           <div class="eyebrow" style="color:#0b7890">THE LOCAL LINEUP</div>
           <h2>Pick your spot.</h2>
           <p>Live forecast widgets will appear in each card once you add their official embed snippets.</p>
+          <!-- This paragraph starts empty. script.js fills it with text
+               telling you which spots you have favorited. aria-live="polite"
+               tells screen readers (software that reads pages aloud to
+               people who are blind or have low vision) to announce the text
+               when it changes. -->
           <p class="fav-status" id="fav-status" aria-live="polite"></p>
         </div>
         <div class="updated-note">Forecasts supplied by Surf-Forecast.com</div>
       </div>
 
+      <!-- THE GRID OF SURF SPOTS
+           Each surf spot is a "card" built from the same pattern:
+             - <article class="spot">: the whole card.
+             - data-spot="...": a custom attribute holding a short unique ID
+               for the spot. script.js uses it to remember favorites.
+             - spot-top: the card's header with the spot name, area label,
+               tag, and a favorite (star) button.
+             - widget-area: holds the forecast, which is an <iframe>. An
+               iframe is a window inside our page that shows content from a
+               different website, here the surf forecast from
+               Surf-Forecast.com. loading="lazy" means it only loads when you
+               scroll near it, which keeps the page fast.
+             - credit: a small link to the full forecast.
+           The favorite button is a <button type="button">: type="button"
+           means it does not submit a form, it just waits for a click.
+           aria-pressed says whether the button is "on" or "off" for screen
+           readers (script.js changes it). The ☆ is just a text character. -->
       <div class="grid">
         <!-- WIDGET SLOT: Newport Beach. Replace the placeholder div below with the complete Widget A snippet. -->
         <article class="spot" data-spot="newport-beach">
@@ -42,42 +121,52 @@
           <div class="widget-area"><iframe title="Newport Beach live surf forecast by Surf-Forecast" src="https://www.surf-forecast.com/breaks/Newportbeach/forecasts/widget/a" loading="lazy" scrolling="no" height="430"></iframe><p class="credit"><a href="https://www.surf-forecast.com/breaks/Newportbeach" target="_blank" rel="noopener">Full Newport Beach forecast ↗</a></p></div>
         </article>
 
+        <!-- Upper Jetties card. (Same pattern as the card above. The forecast
+             comes from a nearby spot, 40th Street Breakwater, as explained in
+             the credit line.) target="_blank" opens a link in a new tab;
+             rel="noopener" is a safety setting for links that open new tabs. -->
         <!-- WIDGET SLOT: Upper Jetties. Replace the placeholder div below with the complete Widget A snippet. -->
         <article class="spot" data-spot="upper-jetties">
           <div class="spot-top"><div><h3>Upper Jetties</h3><div class="area">Newport zone</div></div><div class="spot-actions"><span class="tag">JETTY CHECK</span><button class="fav-btn" type="button" aria-pressed="false">☆</button></div></div>
           <div class="widget-area"><iframe title="40th Street Breakwater surf forecast by Surf-Forecast" src="https://www.surf-forecast.com/breaks/Forty-eth-Street/forecasts/widget/a" loading="lazy" scrolling="no" height="430"></iframe><p class="credit">Closest listed proxy: 40th Street Breakwater. <a href="https://www.surf-forecast.com/regions/Orange-County" target="_blank" rel="noopener">Check Orange County breaks ↗</a></p></div>
         </article>
 
+        <!-- Lower Jetties card (forecast comes from Santa Ana River Jetties). -->
         <!-- WIDGET SLOT: Lower Jetties. Replace the placeholder div below with the complete Widget A snippet. -->
         <article class="spot" data-spot="lower-jetties">
           <div class="spot-top"><div><h3>Lower Jetties</h3><div class="area">Newport zone</div></div><div class="spot-actions"><span class="tag">JETTY CHECK</span><button class="fav-btn" type="button" aria-pressed="false">☆</button></div></div>
           <div class="widget-area"><iframe title="Santa Ana River Jetties surf forecast by Surf-Forecast" src="https://www.surf-forecast.com/breaks/Santa-Ana-River-Jetties/forecasts/widget/a" loading="lazy" scrolling="no" height="430"></iframe><p class="credit">Jetty forecast reference. <a href="https://www.surf-forecast.com/breaks/Santa-Ana-River-Jetties" target="_blank" rel="noopener">Full forecast ↗</a></p></div>
         </article>
 
+        <!-- Blackies card. -->
         <!-- WIDGET SLOT: Blackies. Replace the placeholder div below with the complete Widget A snippet. -->
         <article class="spot" data-spot="blackies">
           <div class="spot-top"><div><h3>Blackies</h3><div class="area">Newport Beach</div></div><div class="spot-actions"><span class="tag">BLACKIES</span><button class="fav-btn" type="button" aria-pressed="false">☆</button></div></div>
           <div class="widget-area"><iframe title="Blackies live surf forecast by Surf-Forecast" src="https://www.surf-forecast.com/breaks/Blackies/forecasts/widget/a" loading="lazy" scrolling="no" height="430"></iframe><p class="credit"><a href="https://www.surf-forecast.com/breaks/Blackies" target="_blank" rel="noopener">Full Blackies forecast ↗</a></p></div>
         </article>
 
+        <!-- The Wedge card (its tag warns that it is for experts only). -->
         <!-- WIDGET SLOT: The Wedge. Replace the placeholder div below with the complete Widget A snippet. -->
         <article class="spot" data-spot="the-wedge">
           <div class="spot-top"><div><h3>The Wedge</h3><div class="area">Newport Beach</div></div><div class="spot-actions"><span class="tag">EXPERTS ONLY</span><button class="fav-btn" type="button" aria-pressed="false">☆</button></div></div>
           <div class="widget-area"><iframe title="The Wedge live surf forecast by Surf-Forecast" src="https://www.surf-forecast.com/breaks/The-Wedge_1/forecasts/widget/a" loading="lazy" scrolling="no" height="430"></iframe><p class="credit"><a href="https://www.surf-forecast.com/breaks/The-Wedge_1" target="_blank" rel="noopener">Full Wedge forecast ↗</a></p></div>
         </article>
 
+        <!-- Newport Point card. -->
         <!-- WIDGET SLOT: Newport Point. Replace the placeholder div below with the complete Widget A snippet. -->
         <article class="spot" data-spot="newport-point">
           <div class="spot-top"><div><h3>Newport Point</h3><div class="area">Newport zone</div></div><div class="spot-actions"><span class="tag">POINT CHECK</span><button class="fav-btn" type="button" aria-pressed="false">☆</button></div></div>
           <div class="widget-area"><iframe title="Newport Point surf forecast by Surf-Forecast" src="https://www.surf-forecast.com/breaks/Newport-Point/forecasts/widget/a" loading="lazy" scrolling="no" height="430"></iframe><p class="credit"><a href="https://www.surf-forecast.com/breaks/Newport-Point" target="_blank" rel="noopener">Full Newport Point forecast ↗</a></p></div>
         </article>
 
+        <!-- Huntington Beach card. -->
         <!-- WIDGET SLOT: Huntington Beach. Replace the placeholder div below with the complete Widget A snippet. -->
         <article class="spot" data-spot="huntington-beach">
           <div class="spot-top"><div><h3>Huntington Beach</h3><div class="area">Surf City</div></div><div class="spot-actions"><span class="tag">SURF CITY</span><button class="fav-btn" type="button" aria-pressed="false">☆</button></div></div>
           <div class="widget-area"><iframe title="Huntington Beach surf forecast by Surf-Forecast" src="https://www.surf-forecast.com/breaks/Huntington-Beach/forecasts/widget/a" loading="lazy" scrolling="no" height="430"></iframe><p class="credit"><a href="https://www.surf-forecast.com/regions/Orange-County" target="_blank" rel="noopener">Full Huntington / Orange County forecast ↗</a></p></div>
         </article>
 
+        <!-- Corona del Mar card (the last one in the grid). -->
         <!-- WIDGET SLOT: Corona del Mar. Replace the placeholder div below with the complete Widget A snippet. -->
         <article class="spot" data-spot="corona-del-mar">
           <div class="spot-top"><div><h3>Corona del Mar</h3><div class="area">Newport Beach</div></div><div class="spot-actions"><span class="tag">CDM</span><button class="fav-btn" type="button" aria-pressed="false">☆</button></div></div>
@@ -86,6 +175,8 @@
       </div>
     </section>
 
+    <!-- INFO BOX: explains where the forecasts come from and why some cards
+         use a nearby spot's data. -->
     <section class="howto">
       <h2>Forecasts, straight from the source.</h2>
       <p>These cards load Surf-Forecast's official embedded forecast widgets. They fetch the latest available forecast when the page loads; the forecast provider controls update timing. The page does not scrape or copy forecast data.</p>
@@ -93,12 +184,18 @@
     </section>
   </main>
 
+  <!-- FOOTER: the credit line at the bottom of the page. It credits
+       Surf-Forecast.com for the data and reminds visitors to surf safely. -->
   <footer>
     Built for the So Cal sessions. Forecast information is provided by
     <a href="https://www.surf-forecast.com/" target="_blank" rel="noopener">Surf-Forecast.com</a>.
     Always check local conditions and surf within your ability.
   </footer>
 
+  <!-- This <script> tag loads script.js, our JavaScript file. It is placed at
+       the very END of the body on purpose: the browser reads the page from
+       top to bottom, and the script needs the cards and buttons above to
+       already exist before it can find them. -->
   <script src="script.js"></script>
 </body>
 </html>
